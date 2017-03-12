@@ -8,8 +8,8 @@ function Spectrum() {
     var spectrumMinExponent = 3
     var spectrumExponentScale = 2
 
-    var SpectrumStart = -200;
-    var SpectrumEnd = 2000;
+    var SpectrumStart = 0;
+    var SpectrumEnd = 1300;
     var SpectrumLogScale = 2.55;
 
     var Bar1080pWidth = 18;
@@ -19,8 +19,8 @@ function Spectrum() {
     var spectrumHeight = 255;
 
     var spectrum = {
-        GetVisualBins: function( dataArray ) {
-            
+        GetVisualBins: function( dataArray, numElements ) {
+            var SpectrumBarCount = numElements;
             var SamplePoints = [];
             var NewArray = [];
             var LastSpot = 0;

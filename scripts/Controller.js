@@ -1,16 +1,19 @@
 function Controller() {
 
     var analyser;
+    var view;
     var scene;
 
     var controller = {
         visualizers: {
             'Hill Fog': new HillFog(),
-            'Barred': new Barred()
+            'Barred': new Barred(),
+            'Triangular Tunnel': new TriangularTunnel()
         },
         activeViz: null,
         init: function( AudioAnalyser, View ) {
             analyser = AudioAnalyser.analyser;
+            view = View;
             scene = View.scene;
 
             var selector = $( '<div></div>' );
@@ -32,6 +35,7 @@ function Controller() {
             var vizkeys = Object.keys( controller.visualizers );
             for( var i = 0; i < vizkeys.length; i++ ) {
                 var li = $( '<li>' + vizkeys[i] + '</li>' );
+                    li.attr( 'id', 'vis_' + vizkeys[i] );
                     li.attr( 'class', 'visualizer' );
                 list.append( li );
             }
@@ -39,7 +43,7 @@ function Controller() {
             $( '.visualizer' ).each( function(i) {
                 
                 if( controller.visualizers.hasOwnProperty( $(this).text() ) ) {
-                    controller.visualizers[ $(this).text() ].init( analyser, scene );
+                    controller.visualizers[ $(this).text() ].init( analyser, view );
                 }
 
                 $(this).on( 'click', function() {
@@ -60,6 +64,9 @@ function Controller() {
                     }
                 } );
             } );
+
+            $( '#vis_Barred' ).trigger( 'click' );
+
         }
     }
 
