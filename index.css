@@ -5,7 +5,7 @@
 
 html {
     background-color: #101010;   
-    background: radial-gradient( circle, #121212, #080808 );
+    background: radial-gradient( circle, #060606, #010101 );
     overflow: hidden;
 }
 body {
@@ -32,6 +32,15 @@ body {
     text-align: center;
     font-size: 30px;
     padding-bottom: 30px;
+}
+
+#instructions {
+    position: fixed;
+    bottom: 50%;
+    width: 100%;
+    color: #BBB;
+    text-align: center;
+    font-size: 18px;
 }
 
 #selector {

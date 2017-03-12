@@ -2,6 +2,7 @@ function HillFog() {
 
     var geometry;
     var analyser;
+    var view;
     var scene;
 
     var plane;
@@ -20,11 +21,14 @@ function HillFog() {
 
     var hillfog = {
         name: 'Foggy Hills',
-        init: function( Analyser, Scene ) {
+        init: function( Analyser, View ) {
             analyser = Analyser;
-            scene = Scene;
+            view = View;
+            scene = View.scene;
         },
         make: function() {
+            view.useOrthographicCamera();
+
             geometry = new THREE.PlaneBufferGeometry( 900, 40, 127 )
             var uniforms = {};
             var material = new THREE.ShaderMaterial( {

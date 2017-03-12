@@ -2,6 +2,7 @@ function Barred() {
 
     var group;
     var analyser;
+    var view;
     var scene;
 
     var bufferLength;
@@ -28,9 +29,10 @@ function Barred() {
 
     var barred = {
         name: 'Barred',
-        init: function( Analyser, Scene ) {
+        init: function( Analyser, View ) {
             analyser = Analyser;
-            scene = Scene;
+            view = View;
+            scene = View.scene;
         },
         make: function() {
             group = new THREE.Object3D();
@@ -38,6 +40,8 @@ function Barred() {
             analyser.fftSize = fsize;
             bufferLength = analyser.frequencyBinCount;
             dataArray = new Uint8Array(bufferLength);
+
+            view.useOrthographicCamera();
 
             positionX = -20 * ( numBars / 2 );
 
@@ -53,7 +57,7 @@ function Barred() {
                 plane = new THREE.Mesh( geometry, material );
                 plane.position.x = positionX;
                 positionX += 20;
-                console.log( 'added' );
+                
                 group.add( plane );
             }
             
@@ -64,7 +68,7 @@ function Barred() {
         },
         render: function() {
             analyser.getByteFrequencyData( dataArray );
-            visualArray = spectrum.GetVisualBins( dataArray );
+            visualArray = spectrum.GetVisualBins( dataArray, 64 );
             if( group ) {
                 for(var i = 0; i < visualArray.length; i++) {
                     group.children[i].geometry.attributes.position.array[1] = visualArray[i];

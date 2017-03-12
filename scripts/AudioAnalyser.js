@@ -32,7 +32,6 @@ function AudioAnalyser() {
     }
 
     function playAudio() {
-        console.log( 'Audio starting' );
         audioanalyser.source.connect( audioanalyser.analyser );
         audioanalyser.source.connect( audioanalyser.gainNode );
         audioanalyser.gainNode.connect( audioanalyser.audioCtx.destination );

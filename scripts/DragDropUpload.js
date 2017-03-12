@@ -10,6 +10,11 @@ function DragDropUpload() {
                 audioname.attr( 'id', 'audioname' );
             $( 'body' ).append( audioname );
 
+            var instructions = $( '<div></div>' );
+                instructions.attr( 'id', 'instructions' );
+                instructions.text( 'drop an .mp3 anywhere on the page' );
+            $( 'body' ).append( instructions );
+
             function drop_handler( e ) {
                 e.preventDefault();
 
@@ -19,6 +24,7 @@ function DragDropUpload() {
                 var reader = new FileReader();
 
                 reader.onload = function( fileEvent ) {
+                    $( '#instructions' ).remove();
                     var data = fileEvent.target.result;
                     audioAnalyser.makeAudio( data );
                 };
@@ -27,7 +33,6 @@ function DragDropUpload() {
             }
 
             function dragover_handler( e ) {
-                console.log( 'dragover' );
                 e.preventDefault();
             }
         }
