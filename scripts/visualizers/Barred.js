@@ -4,7 +4,15 @@ function Barred() {
     var analyser;
     var scene;
 
+    var bufferLength;
+    var dataArray;
+    var visualArray;
+    var fsize = 4096; 
+    var numBars = 64;
+
     var plane;
+
+    var spectrum;
 
     var vertexShader = [
             "void main() {",
@@ -26,12 +34,16 @@ function Barred() {
         },
         make: function() {
             group = new THREE.Object3D();
+            spectrum = new Spectrum();
+            analyser.fftSize = fsize;
+            bufferLength = analyser.frequencyBinCount;
+            dataArray = new Uint8Array(bufferLength);
 
-            positionX = -750;
+            positionX = -20 * ( numBars / 2 );
 
-            for( var i = 0; i < 128; i++ ) {
+            for( var i = 0; i < numBars; i++ ) {
 
-                geometry = new THREE.PlaneBufferGeometry( 10, 40, 1 )
+                geometry = new THREE.PlaneBufferGeometry( 18, 5, 1 )
                 var uniforms = {};
                 var material = new THREE.ShaderMaterial( {
                     uniforms: uniforms,
@@ -40,7 +52,8 @@ function Barred() {
                 });
                 plane = new THREE.Mesh( geometry, material );
                 plane.position.x = positionX;
-                positionX += 12;
+                positionX += 20;
+                console.log( 'added' );
                 group.add( plane );
             }
             
@@ -50,14 +63,12 @@ function Barred() {
             scene.remove( group );
         },
         render: function() {
-            analyser.fftSize = 256;
-            var bufferLength = analyser.frequencyBinCount;
-            var dataArray = new Uint8Array(bufferLength);
-            analyser.getByteFrequencyData(dataArray);
+            analyser.getByteFrequencyData( dataArray );
+            visualArray = spectrum.GetVisualBins( dataArray );
             if( group ) {
-                for(var i = 0; i < bufferLength; i++) {
-                    group.children[i].geometry.attributes.position.array[1] = dataArray[i];
-                    group.children[i].geometry.attributes.position.array[4] = dataArray[i];       
+                for(var i = 0; i < visualArray.length; i++) {
+                    group.children[i].geometry.attributes.position.array[1] = visualArray[i];
+                    group.children[i].geometry.attributes.position.array[4] = visualArray[i];
                     group.children[i].geometry.attributes.position.needsUpdate = true;
                 }
             }
