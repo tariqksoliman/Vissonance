@@ -23,10 +23,10 @@ function DragDropUpload() {
  
                 request.open('GET', 'songs/' + mp3name, true);
                 request.responseType = 'arraybuffer';
-                
+                audioname.text( '[ Loading ]' );
                 request.onload = function () {
                     audioname.text( mp3name.replace(/\.[^/.]+$/, "") );
-                    $( '#instructions' ).remove();
+                    $( '#instructions' ).fadeOut( function() { $(this).remove(); } );
                     audioAnalyser.makeAudio( request.response );
                 };
                 
@@ -42,7 +42,7 @@ function DragDropUpload() {
                 var reader = new FileReader();
 
                 reader.onload = function( fileEvent ) {
-                    $( '#instructions' ).remove();
+                    $( '#instructions' ).fadeOut( function() { $(this).remove(); } );
                     var data = fileEvent.target.result;
                     audioAnalyser.makeAudio( data );
                 };
