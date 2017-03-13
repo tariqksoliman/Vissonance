@@ -36,11 +36,18 @@ body {
 
 #instructions {
     position: fixed;
-    bottom: 50%;
+    bottom: 10%;
     width: 100%;
     color: #BBB;
     text-align: center;
     font-size: 18px;
+}
+#defaultsong {
+    font-size: 13px;
+    cursor: pointer;
+}
+#defaultsong:hover {
+    text-decoration: underline;
 }
 
 #selector {

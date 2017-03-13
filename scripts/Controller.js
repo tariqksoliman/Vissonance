@@ -77,7 +77,7 @@ function Controller() {
                 } );
             } );
 
-            $( '#vis_Barred' ).trigger( 'click' );
+            $( '#vis_Iris' ).trigger( 'click' );
 
         }
     }
