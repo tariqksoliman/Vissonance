@@ -8,7 +8,8 @@ function Controller() {
         visualizers: {
             'Hill Fog': new HillFog(),
             'Barred': new Barred(),
-            'Triangular Tunnel': new TriangularTunnel()
+            'Tricentric': new Tricentric(),
+            'Iris': new Iris()
         },
         activeViz: null,
         init: function( AudioAnalyser, View ) {
@@ -24,12 +25,23 @@ function Controller() {
             $( '#selector' ).append( list );
 
             $( 'body' ).mousemove( function() {
-                $( '#selector' ).stop().show().css( 'opacity', 1 ).delay( 2000 ).animate( {
-                    opacity: 0
-                }, 5000 );
-                $( '#audioname' ).stop().show().css( 'opacity', 1 ).delay( 5000 ).animate( {
-                    opacity: 0.1
-                }, 12500 );
+                $( '#selector' ).stop().animate( {opacity: 1}, 150, function() {
+                    setTimeout( function() {
+                            $( '#selector' ).stop().animate( {
+                                opacity: 0
+                            }, 5000 );
+                        }, 2000
+                    );
+                } );
+
+                $( '#audioname' ).stop().animate( {opacity: 1}, 150, function() {
+                    setTimeout( function() {
+                            $( '#audioname' ).stop().animate( {
+                                opacity: 0.1
+                            }, 12500 );
+                        }, 7000
+                    );
+                } );
             } );
 
             var vizkeys = Object.keys( controller.visualizers );

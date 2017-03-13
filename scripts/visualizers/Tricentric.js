@@ -1,4 +1,4 @@
-function TriangularTunnel() {
+function Tricentric() {
 
     var group;
     var analyser;
@@ -29,7 +29,7 @@ function TriangularTunnel() {
         ].join('\n');
 
 
-    var triangulartunnel = {
+    var tricentric= {
         name: 'Triangluar Tunnel',
         init: function( Analyser, View ) {
             analyser = Analyser;
@@ -76,9 +76,9 @@ function TriangularTunnel() {
         },
         render: function() {
             analyser.getByteFrequencyData( dataArray );
-            visualArray = spectrum.GetVisualBins( dataArray, 32 );
+            visualArray = spectrum.GetVisualBins( dataArray, 32, 0, 1300 );
             var avg = arrayAverage( visualArray );
-            view.camera.rotation.z += Math.pow( (avg / 8192) + 1, 2 ) - 1;
+            view.camera.rotation.z += (avg <= 1) ? 0 : Math.pow( (avg / 8192) + 1, 2 ) - 1;
             if( group ) {
                 for(var i = 0; i < visualArray.length; i++) {
                     setUniformColor( i, 308 - ( visualArray[i] ), parseInt(avg / 255 * 40) + 60, parseInt(visualArray[i]/ 255 * 25) + 45, visualArray[i] );
@@ -104,6 +104,6 @@ function TriangularTunnel() {
         return sum / arr.length;
     }
 
-    return triangulartunnel;
+    return tricentric;
 
 }

@@ -68,7 +68,7 @@ function Barred() {
         },
         render: function() {
             analyser.getByteFrequencyData( dataArray );
-            visualArray = spectrum.GetVisualBins( dataArray, 64 );
+            visualArray = spectrum.GetVisualBins( dataArray, 64, 4, 1300 );
             if( group ) {
                 for(var i = 0; i < visualArray.length; i++) {
                     group.children[i].geometry.attributes.position.array[1] = visualArray[i];

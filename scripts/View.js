@@ -1,7 +1,6 @@
 function View() {
 
     var container;
-    var renderer;
     var cube, plane;
     var targetRotation = 0;
     var targetRotationOnMouseDown = 0;
@@ -14,6 +13,7 @@ function View() {
     
     var view = {
         scene: null,
+        renderer: null,
         camera: null,
         init: function( audioAnalyser ) {
             AudioAnalyser = audioAnalyser;
@@ -28,17 +28,17 @@ function View() {
             view.scene = new THREE.Scene();
             // Plane
            
-            renderer = new THREE.WebGLRenderer( { alpha: true } );
-            renderer.setPixelRatio( window.devicePixelRatio );
-            renderer.setSize( window.innerWidth, window.innerHeight );
-            container.appendChild( renderer.domElement );
+            view.renderer = new THREE.WebGLRenderer( { alpha: true } );
+            view.renderer.setPixelRatio( window.devicePixelRatio );
+            view.renderer.setSize( window.innerWidth, window.innerHeight );
+            container.appendChild( view.renderer.domElement );
             //
             window.addEventListener( 'resize', onWindowResize, false );
 
             animate();
         },
         usePerspectiveCamera: function() {
-            view.camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.01, 1000 );
+            view.camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.01, 2000 );
             view.camera.position.y = 150;
             view.camera.position.z = 500;
         },
@@ -55,7 +55,7 @@ function View() {
         windowHalfY = window.innerHeight / 2;
         view.camera.aspect = window.innerWidth / window.innerHeight;
         view.camera.updateProjectionMatrix();
-        renderer.setSize( window.innerWidth, window.innerHeight );
+        view.renderer.setSize( window.innerWidth, window.innerHeight );
     }
     //
     function animate() {
@@ -72,7 +72,7 @@ function View() {
             view.renderVisualization();
         }
 
-        renderer.render( view.scene, view.camera );
+        view.renderer.render( view.scene, view.camera );
     }
 
     return view;
