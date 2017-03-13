@@ -12,8 +12,26 @@ function DragDropUpload() {
 
             var instructions = $( '<div></div>' );
                 instructions.attr( 'id', 'instructions' );
-                instructions.text( 'drop an .mp3 anywhere on the page' );
+                instructions.append( '<div>drop an .mp3</div>' );
+                instructions.append( "<div id='defaultsong'>or play default</div>" );
             $( 'body' ).append( instructions );
+
+            $( '#defaultsong' ).on( 'click', function() {
+
+                var mp3name = 'DM Galaxy - Bad Motives ft. Aloma Steele [NCS Release].mp3';
+                var request = new XMLHttpRequest();
+ 
+                request.open('GET', 'songs/' + mp3name, true);
+                request.responseType = 'arraybuffer';
+                
+                request.onload = function () {
+                    audioname.text( mp3name.replace(/\.[^/.]+$/, "") );
+                    $( '#instructions' ).remove();
+                    audioAnalyser.makeAudio( request.response );
+                };
+                
+                request.send();
+            } );
 
             function drop_handler( e ) {
                 e.preventDefault();
