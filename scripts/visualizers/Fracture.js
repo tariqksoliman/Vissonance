@@ -74,7 +74,6 @@ function Fracture() {
                     vertexShader: vertexShader,
                     fragmentShader: fragmentShader
                 });
-                material.transparent = true;
                 //material = new THREE.MeshBasicMaterial({color:"red",wireframe:true});
                 plane = new THREE.Mesh( geometry, material );
                 plane.rotation.x = -Math.PI / 2;
