@@ -1,4 +1,10 @@
 function DragDropUpload() {
+    var defaultSongs = [
+        'DM Galaxy - Bad Motives ft. Aloma Steele [NCS Release].mp3',
+        'FREYER feat. Jordan Kaahn - Borrow.mp3',
+        'Goblins from Mars - Cold Blooded Love (ft. Krista Marina).mp3',
+        'Sex Whales & Roee Yeger - Where Was I (feat. Ashley Apollodor) [NCS Release].mp3'
+    ];
 
     var dragdropupload = {
         filename: null,
@@ -18,7 +24,7 @@ function DragDropUpload() {
 
             $( '#defaultsong' ).on( 'click', function() {
 
-                var mp3name = 'DM Galaxy - Bad Motives ft. Aloma Steele [NCS Release].mp3';
+                var mp3name = defaultSongs[parseInt( Math.random() * defaultSongs.length )];
                 var request = new XMLHttpRequest();
  
                 request.open('GET', 'songs/' + mp3name, true);
