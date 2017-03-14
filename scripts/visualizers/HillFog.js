@@ -20,7 +20,7 @@ function HillFog() {
 
 
     var hillfog = {
-        name: 'Foggy Hills',
+        name: 'Hill Fog',
         init: function( Analyser, View ) {
             analyser = Analyser;
             view = View;
