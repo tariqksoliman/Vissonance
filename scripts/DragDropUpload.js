@@ -1,9 +1,9 @@
 function DragDropUpload() {
     var defaultSongs = [
-        'DM Galaxy - Bad Motives ft. Aloma Steele [NCS Release].mp3',
-        'FREYER feat. Jordan Kaahn - Borrow.mp3',
+        'DM Galaxy - Bad Motives (ft. Aloma Steele).mp3',
+        'FREYER - Borrow (ft. Jordan Kaahn).mp3',
         'Goblins from Mars - Cold Blooded Love (ft. Krista Marina).mp3',
-        'Sex Whales & Roee Yeger - Where Was I (feat. Ashley Apollodor) [NCS Release].mp3'
+        'Sex Whales & Roee Yeger - Where Was I (ft. Ashley Apollodor).mp3'
     ];
 
     var dragdropupload = {
