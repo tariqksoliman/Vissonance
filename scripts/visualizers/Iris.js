@@ -32,7 +32,7 @@ function Iris() {
 
 
     var iris = {
-        name: 'Spiral',
+        name: 'Iris',
         init: function( Analyser, View ) {
             analyser = Analyser;
             view = View;

@@ -30,7 +30,7 @@ function Tricentric() {
 
 
     var tricentric= {
-        name: 'Triangluar Tunnel',
+        name: 'Tricentric',
         init: function( Analyser, View ) {
             analyser = Analyser;
             view = View;

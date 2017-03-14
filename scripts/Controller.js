@@ -9,7 +9,8 @@ function Controller() {
             'Hill Fog': new HillFog(),
             'Barred': new Barred(),
             'Tricentric': new Tricentric(),
-            'Iris': new Iris()
+            'Iris': new Iris(),
+            'Fracture': new Fracture()
         },
         activeViz: null,
         init: function( AudioAnalyser, View ) {
