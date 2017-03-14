@@ -4,7 +4,7 @@ A WebGL Audio Visualizer
 [Demo](https://tariqksoliman.github.io/Vissonance/) - currently only works in non-mobile Chrome
 
 ## Music
-The demo uses the follow tracks:  
+The demo uses the following tracks:  
 *I tried to find copyright free songs. If one of the follow songs is yours and you'd like it taken down, I'll happily do it.*
 
 
