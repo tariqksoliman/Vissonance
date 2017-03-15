@@ -24,6 +24,18 @@ body {
     font-size: 30px;
 }
 
+#warning {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    position: fixed;
+    top: 10px;
+    width: 100%;
+    color: #C00;
+    text-align: center;
+    font-size: 36px;
+    padding-bottom: 30px;
+}
+
 #audioname {
     position: fixed;
     bottom: 0;

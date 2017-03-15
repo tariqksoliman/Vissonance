@@ -10,13 +10,18 @@ function Controller() {
             'Barred': new Barred(),
             'Tricentric': new Tricentric(),
             'Iris': new Iris(),
-            'Fracture': new Fracture()
+            'Fracture': new Fracture(),
+            'Siphon': new Siphon()
         },
         activeViz: null,
         init: function( AudioAnalyser, View ) {
             analyser = AudioAnalyser.analyser;
             view = View;
             scene = View.scene;
+
+            var warning = $( '<div>WARNING<br>Contains Flashing Images</div>' );
+                warning.attr( 'id', 'warning' );
+            $( 'body' ).append( warning );
 
             var selector = $( '<div></div>' );
                 selector.attr( 'id', 'selector' );

@@ -33,6 +33,7 @@ function DragDropUpload() {
                 request.onload = function () {
                     audioname.text( mp3name.replace(/\.[^/.]+$/, "") );
                     $( '#instructions' ).fadeOut( function() { $(this).remove(); } );
+                    $( '#warning' ).fadeOut( function() { $(this).remove(); } );
                     audioAnalyser.makeAudio( request.response );
                 };
                 
@@ -49,6 +50,7 @@ function DragDropUpload() {
 
                 reader.onload = function( fileEvent ) {
                     $( '#instructions' ).fadeOut( function() { $(this).remove(); } );
+                    $( '#warning' ).fadeOut( function() { $(this).remove(); } );
                     var data = fileEvent.target.result;
                     audioAnalyser.makeAudio( data );
                 };
