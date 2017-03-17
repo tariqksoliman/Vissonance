@@ -5,6 +5,7 @@ function AudioAnalyser() {
         source: null,
         analyser: null,
         gainNode: null,
+        hasNewSong: false,
         init: function() {
             audioanalyser.audioCtx = new( window.AudioContext || window.webkitAudioContext )();
             audioanalyser.analyser = audioanalyser.audioCtx.createAnalyser();
@@ -28,6 +29,7 @@ function AudioAnalyser() {
                 audioanalyser.source.buffer = audioanalyser.audioCtx.createBuffer( data, false );
                 playAudio();
             }
+            audioAnalyser.hasNewSong = true;
         }
     }
 
@@ -36,6 +38,7 @@ function AudioAnalyser() {
         audioanalyser.source.connect( audioanalyser.gainNode );
         audioanalyser.gainNode.connect( audioanalyser.audioCtx.destination );
         audioanalyser.source.start(0);
+        audioAnalyser.hasNewSong = false;
     }
 
     return audioanalyser;

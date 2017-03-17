@@ -32,7 +32,7 @@ function Tricentric() {
     var tricentric= {
         name: 'Tricentric',
         init: function( Analyser, View ) {
-            analyser = Analyser;
+            analyser = Analyser.analyser;
             view = View;
             scene = View.scene;
         },
