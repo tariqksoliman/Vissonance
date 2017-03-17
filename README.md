@@ -5,7 +5,7 @@ A WebGL Audio Visualizer
 
 ## Music
 The demo uses the following tracks:  
-*I tried to find copyright free songs. If one of the follow songs is yours and you'd like it taken down, I'll happily do it.*
+*I tried to find copyright free songs. If one of the following songs is yours and you'd like it taken down, I'll happily do it.*
 
 
 * DM Galaxy - Bad Motives (ft. Aloma Steele)  
