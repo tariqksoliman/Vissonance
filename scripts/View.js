@@ -1,7 +1,5 @@
 function View() {
 
-    var container;
-    var cube, plane;
     var targetRotation = 0;
     var targetRotationOnMouseDown = 0;
     var mouseX = 0;
@@ -15,23 +13,24 @@ function View() {
         scene: null,
         renderer: null,
         camera: null,
+        container: null,
         init: function( audioAnalyser ) {
             AudioAnalyser = audioAnalyser;
             
-            container = document.createElement( 'div' );
-            container.width = '100%';
-            container.height = '100%';
-            document.body.appendChild( container );
+            view.container = document.createElement( 'div' );
+            view.container.width = '100%';
+            view.container.height = '100%';
+            document.body.appendChild( view.container );
             view.camera = new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, 1, 1000 );
             view.camera.position.y = 150;
             view.camera.position.z = 500;
             view.scene = new THREE.Scene();
             // Plane
            
-            view.renderer = new THREE.WebGLRenderer( { alpha: true } );
+            view.renderer = new THREE.WebGLRenderer( { alpha: true, preserveDrawingBuffer: true } );
             view.renderer.setPixelRatio( window.devicePixelRatio );
             view.renderer.setSize( window.innerWidth, window.innerHeight );
-            container.appendChild( view.renderer.domElement );
+            view.container.appendChild( view.renderer.domElement );
             //
             window.addEventListener( 'resize', onWindowResize, false );
 

@@ -11,11 +11,12 @@ function Controller() {
             'Tricentric': new Tricentric(),
             'Iris': new Iris(),
             'Fracture': new Fracture(),
-            'Siphon': new Siphon()
+            'Siphon': new Siphon(),
+            'Silk': new Silk()
         },
         activeViz: null,
         init: function( AudioAnalyser, View ) {
-            analyser = AudioAnalyser.analyser;
+            analyser = AudioAnalyser;
             view = View;
             scene = View.scene;
 

@@ -44,7 +44,7 @@ function Siphon() {
     var siphon = {
         name: 'Siphon',
         init: function( Analyser, View ) {
-            analyser = Analyser;
+            analyser = Analyser.analyser;
             view = View;
             scene = View.scene;
         },
@@ -90,7 +90,7 @@ function Siphon() {
         },
         destroy: function() {
             scene.remove( group );
-             view.renderer.autoClearColor = false;
+            view.renderer.autoClearColor = false;
         },
         render: function() {
             analyser.getByteFrequencyData( dataArray );
@@ -135,7 +135,7 @@ function Siphon() {
     }
 
     function setUniformColor( groupI, loudness ) {
-        var h = modn( 250 - (loudness*8), 360 );
+        var h = modn( 250 - (loudness*7), 360 );
         group.children[groupI].material.uniforms.col.value = new THREE.Color( 'hsl(' + h + ', 100%, 50%)' );
         view.renderer.setClearColor( new THREE.Color( 'hsl(' + ( (h + 180) % 360 ) + ', 100%, 97%)' ), 1);
     }

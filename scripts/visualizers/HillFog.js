@@ -22,7 +22,7 @@ function HillFog() {
     var hillfog = {
         name: 'Hill Fog',
         init: function( Analyser, View ) {
-            analyser = Analyser;
+            analyser = Analyser.analyser;
             view = View;
             scene = View.scene;
         },

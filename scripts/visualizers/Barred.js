@@ -30,7 +30,7 @@ function Barred() {
     var barred = {
         name: 'Barred',
         init: function( Analyser, View ) {
-            analyser = Analyser;
+            analyser = Analyser.analyser;
             view = View;
             scene = View.scene;
         },
@@ -47,7 +47,7 @@ function Barred() {
 
             for( var i = 0; i < numBars; i++ ) {
 
-                geometry = new THREE.PlaneBufferGeometry( 18, 5, 1 )
+                geometry = new THREE.PlaneBufferGeometry( 18, 5, 1 );
                 var uniforms = {};
                 var material = new THREE.ShaderMaterial( {
                     uniforms: uniforms,
@@ -68,7 +68,7 @@ function Barred() {
         },
         render: function() {
             analyser.getByteFrequencyData( dataArray );
-            visualArray = spectrum.GetVisualBins( dataArray, 64, 4, 1300 );
+            visualArray = spectrum.GetVisualBins( dataArray, numBars, 4, 1300 );
             if( group ) {
                 for(var i = 0; i < visualArray.length; i++) {
                     group.children[i].geometry.attributes.position.array[1] = visualArray[i];
