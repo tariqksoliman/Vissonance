@@ -20,10 +20,11 @@ function Controller() {
             view = View;
             scene = View.scene;
 
+            /*
             var warning = $( '<div>WARNING<br>Contains Flashing Images</div>' );
                 warning.attr( 'id', 'warning' );
             $( 'body' ).append( warning );
-
+            */
             var selector = $( '<div></div>' );
                 selector.attr( 'id', 'selector' );
             $( 'body' ).append( selector );
